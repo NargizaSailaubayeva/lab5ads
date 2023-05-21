@@ -1,4 +1,5 @@
 public class Main {
+    //check BST class
     public static void main(String[] args) {
         BST bst = new BST();
         bst.put(1, 5);
