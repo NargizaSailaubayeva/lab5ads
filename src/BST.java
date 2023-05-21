@@ -80,6 +80,10 @@ public class BST<K extends Comparable <K>,V> implements Iterable<K>{
         }
         return current;
     }
+    public void delete(K key) {
+        root = remove(root, key);
+        size--;
+    }
     private K findSmallValue(Node<K, V> current) {
         if (current.left == null) {
             return current.key;
