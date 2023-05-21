@@ -50,6 +50,13 @@ public class BST<K extends Comparable <K>,V> implements Iterable<K>{
             return getNode(current.right, key);
         }
     }
+    public V get(K key) {
+        Node<K, V> node = getNode(root, key);
+        if (node == null) {
+            return null;
+        }
+        return node.value;
+    }
     private class BSTIterator implements Iterator<K> {
         private Stack<Node<K, V>> stack;
 
