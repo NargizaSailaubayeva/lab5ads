@@ -57,6 +57,35 @@ public class BST<K extends Comparable <K>,V> implements Iterable<K>{
         }
         return node.value;
     }
+    private Node<K, V> remove(Node<K, V> current, K key) {
+        if (current == null)
+            return null;
+        if (key.compareTo(current.key) < 0) {
+            current.left = remove(current.left, key);
+        } else if (key.compareTo(current.key) > 0) {
+            current.right = remove(current.right, key);
+        } else {
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+            if (current.left == null) {
+                return current.right;
+            }
+            if (current.right == null) {
+                return current.left;
+            }
+            K smallValue = findSmallValue(current.right);
+            current.value = (V) smallValue;
+            current.right = remove(current.right, smallValue);
+        }
+        return current;
+    }
+    private K findSmallValue(Node<K, V> current) {
+        if (current.left == null) {
+            return current.key;
+        }
+        return findSmallValue(current.left);
+    }
     private class BSTIterator implements Iterator<K> {
         private Stack<Node<K, V>> stack;
 
