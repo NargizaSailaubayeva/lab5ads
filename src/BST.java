@@ -33,9 +33,22 @@ public class BST<K extends Comparable <K>,V> implements Iterable<K>{
         }
         return current;
     }
-
+    public void put(K key, V value) {
+        root = insert(root, key, value);
+        size++;
+    }
     public Iterator<K> iterator() {
         return new BSTIterator();
+    }
+    private Node<K, V> getNode(Node<K, V> current, K key) {
+        if (current == null || key.compareTo(current.key) == 0) {
+            return current;
+        }
+        if (key.compareTo(current.key) < 0) {
+            return getNode(current.left, key);
+        } else {
+            return getNode(current.right, key);
+        }
     }
     private class BSTIterator implements Iterator<K> {
         private Stack<Node<K, V>> stack;
