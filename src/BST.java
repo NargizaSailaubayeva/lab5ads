@@ -207,17 +207,15 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K> {
             pushLeftNodes(node.right);
             return node.key;
         }
-
     }
-
     private Node<K, V> consist(K key, Node current) {
         if (current == null && key.compareTo((K) current.key) == 0) {
             return current;
         }
         if (key.compareTo((K) current.key) < 0) {
-            return getNode(current.left, key);
+            return consist(key, current.left);
         } else {
-            return getNode(current.right, key);
+            return consist(key, current.right);
         }
     }
     public boolean consist(K key) {
