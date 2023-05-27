@@ -11,6 +11,9 @@ public class Main {
         bst.get(2);
         bst.delete(3);
         System.out.println(bst.get(4));
+        System.out.println(bst.get(2));
         System.out.println(bst.size());
+        System.out.println(bst.consist(4));
+        System.out.println(bst.consist(6));
     }
 }
